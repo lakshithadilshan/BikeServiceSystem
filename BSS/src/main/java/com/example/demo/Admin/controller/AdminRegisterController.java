@@ -1,4 +1,4 @@
-package com.example.demo.Admin.Controller;
+package com.example.demo.Admin.controller;
 
 import com.example.demo.Admin.Bean.Requestbean;
 import com.example.demo.Admin.Bean.Responsebean;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="adminregister")
+@RequestMapping(value="/adminsc")
 public class AdminRegisterController {
 
     @Autowired
@@ -18,10 +18,16 @@ public class AdminRegisterController {
     @Autowired
     AdminService adminService;
 
-    @PostMapping(value = "register")
-    public Responsebean RegisterAdmin(@RequestBody Requestbean requestbean){
+    @PostMapping(value = "/add")
+    public Responsebean RegisterAdmin(@RequestBody Requestbean requestbean,Responsebean responsebean){
 
-        responsebean = adminService.AdminRegister(requestbean,responsebean);
+        responsebean = adminService.addAdmin(requestbean,responsebean);
+        return responsebean;
+    }
+
+    @PostMapping(value = "/bikelist")
+    public Responsebean BikeList(@RequestBody Requestbean requestbean,Responsebean responsebean){
+        responsebean = adminService.bikeList();
         return responsebean;
     }
 }

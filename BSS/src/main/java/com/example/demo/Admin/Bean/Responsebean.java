@@ -10,4 +10,5 @@ import org.springframework.stereotype.Component;
 public class Responsebean {
     String responseCode;
     String responseMsg;
+    Object content;
 }
